@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello Page</title>
+</head>
+<body>
+        <form style="display: flex;flex-direction: column;width: 20vw" th:method="PATCH" th:action="@{/autos/{id} (id=${auto.getId()})}" th:object="${auto}">
+            <label for="capacity">Enter capacity</label>
+            <input  id="capacity" type="text" th:field="${auto.capacity}"/>
+            <label for="mileage">Enter mileage</label>
+            <input  id="mileage" type="text" th:field="${auto.mileage}"/>
+            <label for="nameOfModel">Enter name of model</label>
+            <input  id="nameOfModel" type="text" th:field="${auto.nameOfModel}"/>
+
+            <input style="font-size: 1.5rem; margin-top: 25px" type="submit" value="Edit!"/>
+        </form>
+</body>
+</html>

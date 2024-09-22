@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello Page</title>
+</head>
+<body>
+    <div style="font-size: 2rem" th:each="driver : ${drivers}">
+        <a th:href="@{/drivers/{id}(id=${driver.getId()})}" th:text=" ${driver.getId()} + ' ' + ${driver.getFirstname()} + ' '+ ${driver.getSurname()}"></a>
+    </div>
+    <hr style="margin-top: 20px"/>
+    <a style="font-size: 2rem" th:href="@{/drivers/new}" >Create</a>
+</body>
+</html>
+

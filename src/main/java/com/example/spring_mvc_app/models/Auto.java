@@ -7,21 +7,21 @@ import jakarta.persistence.*;
 public class Auto {
     @Id
     @Column(name = "autoID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
     @Column
     private Integer capacity;
     @Column
     private Integer mileage;
-
     @Column(name = "automodelID")
     private Integer nameOfModel;
+
 
     public Auto(){
 
     }
 
-    public Auto(int id, int capacity, int mileage, int nameOfModel) {
-        this.Id = id;
+    public Auto(int capacity, int mileage, int nameOfModel) {
         this.capacity = capacity;
         this.mileage = mileage;
         this.nameOfModel = nameOfModel;

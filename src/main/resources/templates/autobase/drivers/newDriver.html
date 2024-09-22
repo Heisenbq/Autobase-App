@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello Page</title>
+</head>
+    <body>
+        <form style="display: flex;flex-direction: column;width: 20vw" th:method="POST" th:action="@{/drivers}" th:object="${driver}">
+            <label for="firstname">Enter firstname:</label>
+            <input type="text" id="firstname" th:field="${driver.firstname}"/>
+            <label for="surname">Enter surname:</label>
+            <input type="text" id="surname" th:field="${driver.surname}"/>
+            <label for="experience">Enter experience:</label>
+            <input type="text" id="experience" th:field="${driver.experience}"/>
+            <label for="phone">Enter phone:</label>
+            <input type="text" id="phone" th:field="${driver.phone}"/>
+
+            <input style="font-size: 1.5rem" type = "submit" value = "Create!"/>
+        </form>
+    </body>
+</html>

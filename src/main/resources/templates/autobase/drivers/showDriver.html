@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello Page</title>
+</head>
+<body>
+<div style="font-size: 2rem">
+    <p th:text=" ${driver.getId()}"></p>
+    <p th:text="${driver.getFirstname()} "></p>
+    <p th:text="${driver.getSurname()}"></p>
+    <p th:text="${driver.getExperience()}"></p>
+    <p th:text="${driver.getPhone()}"></p>
+
+    <hr/>
+    <a th:href="@{/drivers/{id}/edit (id=${driver.getId()})}" >Edit</a>
+    <hr/>
+    <form th:method="DELETE" th:action="@{/drivers/{id} (id=${driver.getId()})}">
+        <input style="font-size: 1.5rem" type="submit" value="Delete"/>
+    </form>
+
+</div>
+</body>
+</html>

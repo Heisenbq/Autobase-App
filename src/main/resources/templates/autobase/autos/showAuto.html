@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello Page</title>
+</head>
+    <body>
+        <div style="font-size: 2rem">
+            <p th:text="${auto.getId()}"></p>
+            <p th:text="${auto.getCapacity()}"></p>
+            <p th:text="${auto.getMileage()}"></p>
+            <p th:text="${auto.getNameOfModel()}"></p>
+
+
+            <hr/>
+            <a th:href="@{/autos/{id}/edit (id=${auto.getId()})}" >Edit</a>
+
+            <hr/>
+            <form th:method="DELETE" th:action="@{/autos/{id} (id=${auto.getId()})}">
+                <input style="font-size: 1.5rem" type="submit" value="Delete"/>
+            </form>
+
+        </div>
+    </body>
+
+
+</html>
