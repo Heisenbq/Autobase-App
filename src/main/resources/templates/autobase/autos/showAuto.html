@@ -5,10 +5,10 @@
 </head>
     <body>
         <div style="font-size: 2rem">
-            <p th:text="${auto.getId()}"></p>
-            <p th:text="${auto.getCapacity()}"></p>
-            <p th:text="${auto.getMileage()}"></p>
-            <p th:text="${auto.getNameOfModel()}"></p>
+            <p th:text="'id: ' + ${auto.getId()}"></p>
+            <p th:text="'capacity: ' + ${auto.getCapacity()}"></p>
+            <p th:text="'mileage: ' + ${auto.getMileage()}"></p>
+            <p th:text="'model: ' + ${auto.getModelOfAuto().getModel()}"></p>
 
 
             <hr/>

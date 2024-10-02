@@ -5,11 +5,11 @@
 </head>
 <body>
 <div style="font-size: 2rem">
-    <p th:text=" ${driver.getId()}"></p>
-    <p th:text="${driver.getFirstname()} "></p>
-    <p th:text="${driver.getSurname()}"></p>
-    <p th:text="${driver.getExperience()}"></p>
-    <p th:text="${driver.getPhone()}"></p>
+    <p th:text="'id: ' + ${driver.getId()}"></p>
+    <p th:text="'firstname: ' + ${driver.getFirstname()} "></p>
+    <p th:text="'surname: ' + ${driver.getSurname()}"></p>
+    <p th:text="'experience: ' + ${driver.getExperience()}"></p>
+    <p th:text="'phone: ' + ${driver.getPhone()}"></p>
 
     <hr/>
     <a th:href="@{/drivers/{id}/edit (id=${driver.getId()})}" >Edit</a>

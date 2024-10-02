@@ -4,14 +4,7 @@
     <title>Hello Page</title>
 </head>
     <body>
-<!--        <form style="display: flex;flex-direction: column;width: 20vw" th:method="POST" th:action="@{/autos}" th:object="${auto}">-->
-<!--            <label for="capacity">Enter capacity</label>-->
-<!--            <input  id="capacity" type="text" th:field="${auto.capacity}"/>-->
-<!--            <label for="mileage">Enter mileage</label>-->
-<!--            <input  id="mileage" type="text" th:field="${auto.mileage}"/>-->
-<!--            <label for="nameOfModel">Enter name of model</label>-->
-<!--            <input  id="nameOfModel" type="text" th:field="${auto.nameOfModel}"/>-->
-<!--        </form>-->
+
 
         <form style="display: flex;flex-direction: column;width: 20vw" th:method="POST" th:action="@{/autos}" th:object="${auto}">
             <label for="capacity">Enter capacity:</label>
@@ -19,7 +12,11 @@
             <label for="mileage">Enter mileage:</label>
             <input type="text" id="mileage" name="mileage" />
             <label for="nameOfModel">Enter name of model:</label>
-            <input type="text" id="nameOfModel" name="nameOfModel"/>
+            <select id="nameOfModel" name="autoModelId">
+                <option disabled selected>Select Model</option>
+                <option th:each="model : ${models}" th:value="${model.id}" th:text="${model.model}"></option>
+            </select>
+<!--            <input type="" id="nameOfModel" name="nameOfModel"/>-->
 
             <input style="font-size: 1.5rem" type = "submit" value = "Create!"/>
         </form>

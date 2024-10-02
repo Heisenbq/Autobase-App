@@ -1,20 +1,26 @@
 package com.example.spring_mvc_app.controllers;
 
 import com.example.spring_mvc_app.dao.AutoService;
+import com.example.spring_mvc_app.dao.ModelOfAutoService;
 import com.example.spring_mvc_app.models.Auto;
 import com.example.spring_mvc_app.models.Driver;
+import com.example.spring_mvc_app.models.ModelOfAuto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/autos")
 public class AutoController {
     private final AutoService autoService;
+    private final ModelOfAutoService modelOfAutoService;
 
     @Autowired
-    public AutoController(AutoService autoService) {
+    public AutoController(AutoService autoService,ModelOfAutoService modelOfAutoService) {
+        this.modelOfAutoService = modelOfAutoService;
         this.autoService = autoService;
     }
 
@@ -31,22 +37,24 @@ public class AutoController {
     @GetMapping("/new")
     public String create(Model model){
         model.addAttribute("auto",new Auto());
+
+        List<ModelOfAuto> modelsOfAutos = modelOfAutoService.getAllModelsOfAutos();
+        model.addAttribute("models",modelsOfAutos);
         return "autobase/autos/newAuto";
     }
     @PostMapping()
-    public String createAuto(@RequestParam("capacity") Integer capacity,@RequestParam("mileage") Integer mileAge, @RequestParam("nameOfModel") Integer nameOfModel){
-        Auto auto=new Auto(capacity,mileAge,nameOfModel);
+    public String createAuto(@RequestParam("capacity") Integer capacity,@RequestParam("mileage") Integer mileAge, @RequestParam("autoModelId") Integer autoModelId){
+        ModelOfAuto modelOfAuto= modelOfAutoService.getModelOfAuto(autoModelId);
+        Auto auto=new Auto(capacity,mileAge,modelOfAuto);
         autoService.saveAuto(auto);
         return "redirect:/autos";
     }
-//    @PostMapping()
-//    public String createAuto(@ModelAttribute("auto") Auto auto){
-//        autoService.saveAuto(auto);
-//        return "redirect:/autos";
-//    }
     @GetMapping("/{id}/edit")
     public  String edit(Model model,@PathVariable Integer id){
         model.addAttribute("auto",autoService.getAuto(id));
+
+        List<ModelOfAuto> modelsOfAutos=modelOfAutoService.getAllModelsOfAutos();
+        model.addAttribute("models",modelsOfAutos);
         return "autobase/autos/editAuto";
     }
     @PatchMapping("/{id}")

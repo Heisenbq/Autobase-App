@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello Page</title>
+</head>
+    <body>
+        <form style="display: flex;flex-direction: column;width: 20vw" th:method="PATCH" th:action="@{/models/{id} (id=${model.id})}" th:object="${model}">
+            <label for="height">Enter height:</label>
+            <input type="text" id="height" th:field="${model.height}"/>
+            <label for="width">Enter width:</label>
+            <input type="text" id="width" th:field="${model.width}"/>
+            <label for="weight">Enter weight:</label>
+            <input type="text" id="weight" th:field="${model.weight}"/>
+            <label for="maxSpeed">Enter maximal speed:</label>
+            <input type="text" id="maxSpeed" th:field="${model.maxSpeed}"/>
+            <label for="model">Enter model of auto:</label>
+            <input type="text" id="model" th:field="${model.model}"/>
+
+            <input style="font-size: 1.5rem" type = "submit" value = "Edit!"/>
+        </form>
+    </body>
+</html>

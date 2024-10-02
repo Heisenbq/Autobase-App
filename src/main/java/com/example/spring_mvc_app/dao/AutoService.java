@@ -29,10 +29,11 @@ public class AutoService {
         Auto existingAuto=autoRepository.findById(id).orElse(null);
         existingAuto.setCapacity(auto.getCapacity());
         existingAuto.setMileage(auto.getMileage());
-        existingAuto.setNameOfModel(auto.getNameOfModel());
+        existingAuto.setModelOfAuto(auto.getModelOfAuto());
         return autoRepository.save(existingAuto);
     }
     public void deleteAuto(Integer id){
-        autoRepository.deleteById(id);
+        autoRepository.deleteById(id
+        );
     }
 }

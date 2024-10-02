@@ -13,18 +13,29 @@ public class Auto {
     private Integer capacity;
     @Column
     private Integer mileage;
-    @Column(name = "automodelID")
-    private Integer nameOfModel;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "automodelid")
+    private ModelOfAuto modelOfAuto;
 
 
     public Auto(){
 
     }
 
-    public Auto(int capacity, int mileage, int nameOfModel) {
+    public Auto(int capacity, int mileage, ModelOfAuto modelOfAuto) {
         this.capacity = capacity;
         this.mileage = mileage;
-        this.nameOfModel = nameOfModel;
+        this.modelOfAuto=modelOfAuto;
+    }
+
+    @Override
+    public String toString() {
+        return "Auto{" +
+                "Id=" + Id +
+                ", capacity=" + capacity +
+                ", mileage=" + mileage +
+                ", modelOfAuto=" + modelOfAuto.toString() +
+                '}';
     }
 
     public int getId() {
@@ -51,21 +62,12 @@ public class Auto {
         this.mileage = mileage;
     }
 
-    public int getNameOfModel() {
-        return nameOfModel;
+
+    public ModelOfAuto getModelOfAuto() {
+        return modelOfAuto;
     }
 
-    @Override
-    public String toString() {
-        return "Auto{" +
-                "id=" + Id +
-                ", capacity=" + capacity +
-                ", mileage=" + mileage +
-                ", nameOfModel=" + nameOfModel +
-                '}';
-    }
-
-    public void setNameOfModel(int nameOfModel) {
-        this.nameOfModel = nameOfModel;
+    public void setModelOfAuto(ModelOfAuto modelOfAuto) {
+        this.modelOfAuto = modelOfAuto;
     }
 }

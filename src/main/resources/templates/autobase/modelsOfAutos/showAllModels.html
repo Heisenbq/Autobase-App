@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello Page</title>
+</head>
+<body>
+<div style="font-size: 2rem" th:each="model : ${models}">
+    <a th:href="@{/models/{id}(id=${model.getId()})}" th:text=" ${model.id} + ' ' + ${model.model}"></a>
+</div>
+<hr style="margin-top: 20px"/>
+<a style="font-size: 2rem" th:href="@{/models/new}" >Create</a>
+</body>
+</html>

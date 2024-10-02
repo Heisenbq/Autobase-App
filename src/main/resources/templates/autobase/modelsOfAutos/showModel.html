@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Hello Page</title>
+</head>
+  <body>
+    <div style="font-size: 2rem">
+      <p th:text="'id: ' + ${model.getId()}"></p>
+      <p th:text="'height: ' + ${model.height} "></p>
+      <p th:text="'width: ' + ${model.width}"></p>
+      <p th:text="'weight: ' + ${model.weight}"></p>
+      <p th:text="'maximal speed: ' + ${model.maxSpeed}"></p>
+      <p th:text="'model: ' + ${model.model}"></p>
+      <hr/>
+      <a th:href="@{/models/{id}/edit (id=${model.getId()})}" >Edit</a>
+      <hr/>
+      <form th:method="DELETE" th:action="@{/models/{id} (id=${model.getId()})}">
+        <input style="font-size: 1.5rem" type="submit" value="Delete"/>
+      </form>
+
+    </div>
+  </body>
+</html>

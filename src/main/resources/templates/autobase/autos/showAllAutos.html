@@ -5,7 +5,7 @@
 </head>
 <body>
     <div style="font-size: 2rem;" th:each="auto : ${autos}">
-        <a th:href="@{/autos/{id} (id=${auto.getId()})}" th:text=" ${auto.getId()} + ' ' + ${auto.getCapacity()} + ' '+ ${auto.getMileage()}+ ' '+ ${auto.getNameOfModel()}"></a>
+        <a th:href="@{/autos/{id} (id=${auto.getId()})}" th:text=" ${auto.getId()} + ' ' + ${auto.getModelOfAuto().getModel()}"></a>
     </div>
     <hr style="margin-top: 20px"/>
     <a style="font-size: 2rem" th:href="@{/autos/new}" >Create</a>
